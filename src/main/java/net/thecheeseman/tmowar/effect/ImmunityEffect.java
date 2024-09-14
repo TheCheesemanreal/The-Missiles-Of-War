@@ -2,7 +2,6 @@ package net.thecheeseman.tmowar.effect;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -10,17 +9,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class RageEffect extends MobEffect
+public class ImmunityEffect extends MobEffect
 {
-    public RageEffect(MobEffectCategory category, int color)
+    public ImmunityEffect(MobEffectCategory category, int color)
     {
         super(category, color);
     }
-    private float healthlasttick;
-    private float totaldamagetaken;
-    private boolean temp = true;
-    private float tempo;
-
     @Override
     public boolean shouldApplyEffectTickThisTick(int tickCount, int amplifier) {
         return true; // replace this with whatever check you want
@@ -28,7 +22,6 @@ public class RageEffect extends MobEffect
 
     @Override
     public void onEffectAdded(LivingEntity entity, int amplifier) {
-        totaldamagetaken = 0;
         super.onEffectAdded(entity, amplifier);
     }
     @Override
@@ -38,20 +31,13 @@ public class RageEffect extends MobEffect
     @Override
     public boolean applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier) {
         if (pLivingEntity instanceof Player player) {
-            if (!temp)
-            {
-                tempo = totaldamagetaken;
-                totaldamagetaken = healthlasttick - player.getHealth() + tempo;
-                player.heal((float) ((healthlasttick - player.getHealth())*0.8));
-            }
-            healthlasttick = player.getHealth();
-            temp = false;
-            if (Objects.requireNonNull(player.getEffect(ModEffects.RageEffect)).getDuration() == 1)
-            {
-                temp = true;
-                player.hurt(player.damageSources().playerAttack(player), (float) (totaldamagetaken * 1.1));
-
-            }
+            player.removeEffect(MobEffects.WITHER);
+            player.removeEffect(MobEffects.POISON);
+            player.removeEffect(MobEffects.CONFUSION);
+            player.removeEffect(MobEffects.DARKNESS);
+            player.removeEffect(MobEffects.INFESTED);
+            player.removeEffect(MobEffects.WEAVING);
+            player.removeEffect(MobEffects.OOZING);
 
         }
         return true;

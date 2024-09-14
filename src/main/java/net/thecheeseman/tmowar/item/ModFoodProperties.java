@@ -20,19 +20,19 @@ public class ModFoodProperties {
     public static final FoodProperties NukaColaDark = new FoodProperties.Builder()
             .nutrition(10)
             .saturationModifier(1.2f)
-            .effect(() ->  new MobEffectInstance(MobEffects.NIGHT_VISION,300), 1)
+            .effect(() ->  new MobEffectInstance(ModEffects.DarkEffect,300), 1)
             .build();
 
     public static final FoodProperties NukaColaOrange = new FoodProperties.Builder()
             .nutrition(10)
             .saturationModifier(1.2f)
-            .effect(() ->  new MobEffectInstance(MobEffects.JUMP,300, 4), 1)
+            .effect(() ->  new MobEffectInstance(ModEffects.ImmunityEffect,1500), 1)
             .build();
 
     public static final FoodProperties NukaColaQuartz = new FoodProperties.Builder()
             .nutrition(10).saturationModifier(1.2f)
-            .effect(() ->  new MobEffectInstance(MobEffects.GLOWING,300, 1), 1)
-            .effect(() -> new MobEffectInstance(ModEffects.FlyingEffect, 280, 14), 1)
+            .effect(() ->  new MobEffectInstance(MobEffects.GLOWING,300), 1)
+            .effect(() -> new MobEffectInstance(ModEffects.FlyingEffect, 30, 14), 1)
             .build();
 
     public static final FoodProperties NukaColaVictory = new FoodProperties.Builder()

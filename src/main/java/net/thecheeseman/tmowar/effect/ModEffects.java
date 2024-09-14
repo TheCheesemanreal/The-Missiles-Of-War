@@ -31,6 +31,18 @@ public class ModEffects {
             //The color of the effect particles.
             0xffffff
     ));
+    public static final DeferredHolder<MobEffect, ImmunityEffect> ImmunityEffect = MOB_EFFECTS.register("immunity", () -> new ImmunityEffect(
+            //Can be either BENEFICIAL, NEUTRAL or HARMFUL. Used to determine the potion tooltip color of this effect.
+            MobEffectCategory.BENEFICIAL,
+            //The color of the effect particles.
+            0xffffff
+    ));
+    public static final DeferredHolder<MobEffect, DarkEffect> DarkEffect = MOB_EFFECTS.register("dark", () -> new DarkEffect(
+            //Can be either BENEFICIAL, NEUTRAL or HARMFUL. Used to determine the potion tooltip color of this effect.
+            MobEffectCategory.BENEFICIAL,
+            //The color of the effect particles.
+            0xffffff
+    ));
 
 
     public static void register(IEventBus eventBus) {

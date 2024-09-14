@@ -30,6 +30,7 @@ public class DrunkEffect extends MobEffect {
     public void onEffectAdded(LivingEntity entity, int amplifier) {
         entity.heal(20);
         super.onEffectAdded(entity, amplifier);
+        totaldamagetaken = 0;
     }
     @Override
     public void onEffectStarted(LivingEntity entity, int amplifier) {
