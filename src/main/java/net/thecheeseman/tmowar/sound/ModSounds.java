@@ -7,9 +7,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModSounds {
-    // Assuming that your mod id is examplemod
+
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, "examplemod");
+            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, "tmowar");
 
     // All vanilla sounds use variable range events.
     public static final DeferredHolder<SoundEvent, SoundEvent> NUKACOLADRINK = SOUND_EVENTS.register(

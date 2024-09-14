@@ -21,11 +21,11 @@ public class ImmunityEffect extends MobEffect
     }
 
     @Override
-    public void onEffectAdded(LivingEntity entity, int amplifier) {
+    public void onEffectAdded(@NotNull LivingEntity entity, int amplifier) {
         super.onEffectAdded(entity, amplifier);
     }
     @Override
-    public void onEffectStarted(LivingEntity entity, int amplifier) {
+    public void onEffectStarted(@NotNull LivingEntity entity, int amplifier) {
     }
 
     @Override

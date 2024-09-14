@@ -19,7 +19,6 @@ public class RageEffect extends MobEffect
     private float healthlasttick;
     private float totaldamagetaken;
     private boolean temp = true;
-    private float tempo;
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int tickCount, int amplifier) {
@@ -27,12 +26,12 @@ public class RageEffect extends MobEffect
     }
 
     @Override
-    public void onEffectAdded(LivingEntity entity, int amplifier) {
+    public void onEffectAdded(@NotNull LivingEntity entity, int amplifier) {
         totaldamagetaken = 0;
         super.onEffectAdded(entity, amplifier);
     }
     @Override
-    public void onEffectStarted(LivingEntity entity, int amplifier) {
+    public void onEffectStarted(@NotNull LivingEntity entity, int amplifier) {
     }
 
     @Override
@@ -40,7 +39,7 @@ public class RageEffect extends MobEffect
         if (pLivingEntity instanceof Player player) {
             if (!temp)
             {
-                tempo = totaldamagetaken;
+                float tempo = totaldamagetaken;
                 totaldamagetaken = healthlasttick - player.getHealth() + tempo;
                 player.heal((float) ((healthlasttick - player.getHealth())*0.8));
             }

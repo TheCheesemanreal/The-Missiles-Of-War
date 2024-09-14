@@ -19,7 +19,6 @@ public class DrunkEffect extends MobEffect {
     private float healthlasttick;
     private float totaldamagetaken;
     private boolean temp = true;
-    private float tempo;
 
     @Override
     public boolean shouldApplyEffectTickThisTick(int tickCount, int amplifier) {
@@ -27,13 +26,13 @@ public class DrunkEffect extends MobEffect {
     }
 
     @Override
-    public void onEffectAdded(LivingEntity entity, int amplifier) {
+    public void onEffectAdded(@NotNull LivingEntity entity, int amplifier) {
         entity.heal(20);
         super.onEffectAdded(entity, amplifier);
         totaldamagetaken = 0;
     }
     @Override
-    public void onEffectStarted(LivingEntity entity, int amplifier) {
+    public void onEffectStarted(@NotNull LivingEntity entity, int amplifier) {
     }
 
     @Override
@@ -52,7 +51,7 @@ public class DrunkEffect extends MobEffect {
             player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 300, pAmplifier));
             if (!temp)
             {
-                tempo = totaldamagetaken;
+                float tempo = totaldamagetaken;
                 totaldamagetaken = healthlasttick - player.getHealth() + tempo;
                 player.heal(healthlasttick - player.getHealth());
             }

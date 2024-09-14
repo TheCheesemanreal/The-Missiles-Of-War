@@ -25,12 +25,6 @@ public class ModEffects {
             //The color of the effect particles.
             0xffffff
     ));
-    public static final DeferredHolder<MobEffect, FlyingEffect> FlyingEffect = MOB_EFFECTS.register("flying", () -> new FlyingEffect(
-            //Can be either BENEFICIAL, NEUTRAL or HARMFUL. Used to determine the potion tooltip color of this effect.
-            MobEffectCategory.BENEFICIAL,
-            //The color of the effect particles.
-            0xffffff
-    ));
     public static final DeferredHolder<MobEffect, ImmunityEffect> ImmunityEffect = MOB_EFFECTS.register("immunity", () -> new ImmunityEffect(
             //Can be either BENEFICIAL, NEUTRAL or HARMFUL. Used to determine the potion tooltip color of this effect.
             MobEffectCategory.BENEFICIAL,

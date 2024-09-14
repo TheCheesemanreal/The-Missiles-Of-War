@@ -32,7 +32,7 @@ public class ModFoodProperties {
     public static final FoodProperties NukaColaQuartz = new FoodProperties.Builder()
             .nutrition(10).saturationModifier(1.2f)
             .effect(() ->  new MobEffectInstance(MobEffects.GLOWING,300), 1)
-            .effect(() -> new MobEffectInstance(ModEffects.FlyingEffect, 30, 14), 1)
+            .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, 300, 4), 1)
             .build();
 
     public static final FoodProperties NukaColaVictory = new FoodProperties.Builder()

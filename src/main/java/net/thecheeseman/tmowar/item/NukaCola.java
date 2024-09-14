@@ -42,7 +42,7 @@ public class NukaCola extends HoneyBottleItem
 
     }
     @Override
-    public int getUseDuration(ItemStack stack, LivingEntity entity)
+    public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity)
     {
         return 31;
     }
@@ -62,8 +62,6 @@ public class NukaCola extends HoneyBottleItem
             CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, pStack);
             serverplayer.awardStat(Stats.ITEM_USED.get(this));
         }
-        //if (!pLevel.isClientSide) {
-        //pEntityLiving.removeEffect(MobEffects.POISON);}
         if (pStack.isEmpty()) {
             toggle = true;
             return new ItemStack(Items.GLASS_BOTTLE);
