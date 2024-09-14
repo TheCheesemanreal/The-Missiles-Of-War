@@ -2,7 +2,6 @@ package net.thecheeseman.tmowar.effect;
 
 
 
-import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 
@@ -27,14 +26,14 @@ public class FlyingEffect extends MobEffect {
     public boolean applyEffectTick(@NotNull LivingEntity pLivingEntity, int pAmplifier)
     {
         if (pLivingEntity instanceof Player player && !player.getAbilities().mayfly) {
-            player.getAbilities().mayfly = true;
+            player.mayFly();
             player.onUpdateAbilities();
         }
         else if (pLivingEntity instanceof Player player)
         {
-            if ((Objects.requireNonNull(pLivingEntity.getEffect(ModEffects.FlyingEffect.get()))).getDuration() == 1 && !((Player) pLivingEntity).isCreative())
+            if ((Objects.requireNonNull(pLivingEntity.getEffect(ModEffects.FlyingEffect))).getDuration() == 1 && !((Player) pLivingEntity).isCreative())
             {
-                player.getAbilities().mayfly = false;
+                player.getAbilities().mayfly= false;
                 player.getAbilities().flying = false;
 
             }

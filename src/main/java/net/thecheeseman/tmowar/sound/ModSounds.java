@@ -1,28 +1,22 @@
-package net.thecheeseman.tmow.sound;
+package net.thecheeseman.tmowar.sound;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import net.thecheeseman.tmow.TheMissilesOfWar;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModSounds {
+    // Assuming that your mod id is examplemod
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, TheMissilesOfWar.MOD_ID);
+            DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, "examplemod");
 
-    public static final RegistryObject<SoundEvent> NUKACOLADRINK = registerSoundEvents("nukacoladrink");
-    public static final RegistryObject<SoundEvent> silent = registerSoundEvents("silent");
+    // All vanilla sounds use variable range events.
+    public static final DeferredHolder<SoundEvent, SoundEvent> NUKACOLADRINK = SOUND_EVENTS.register(
+            "nukacoladrink", // must match the resource location on the next line
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("tmowar", "nukacoladrink")));
+    public static final DeferredHolder<SoundEvent, SoundEvent> silent = SOUND_EVENTS.register(
+            "silent", // must match the resource location on the next line
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("tmowar", "silent")));
 
-
-
-
-    private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(TheMissilesOfWar.MOD_ID, name)));
-    }
-
-        public static void register(IEventBus eventBus) {
-        SOUND_EVENTS.register(eventBus);
-    }
 }

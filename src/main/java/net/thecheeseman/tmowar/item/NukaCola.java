@@ -12,12 +12,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoneyBottleItem;
 import net.minecraft.world.item.ItemStack;
 
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-
-import net.thecheeseman.tmow.sound.ModSounds;
+import net.thecheeseman.tmowar.sound.ModSounds;
 import org.jetbrains.annotations.NotNull;
-
-import static net.minecraftforge.client.ForgeHooksClient.playSound;
 
 
 public class NukaCola extends HoneyBottleItem
@@ -43,15 +41,14 @@ public class NukaCola extends HoneyBottleItem
         }
 
     }
-
-
-
-
     @Override
-    public int getUseDuration(@NotNull ItemStack pStack)
+    public int getUseDuration(ItemStack stack, LivingEntity entity)
     {
-        return 30;
+        return 31;
     }
+
+
+
 
     @Override
     public @NotNull SoundEvent getDrinkingSound() {
@@ -69,10 +66,10 @@ public class NukaCola extends HoneyBottleItem
         //pEntityLiving.removeEffect(MobEffects.POISON);}
         if (pStack.isEmpty()) {
             toggle = true;
-            return new ItemStack(ModItems.Bottlecap.get());
+            return new ItemStack(Items.GLASS_BOTTLE);
         } else {
             if (pEntityLiving instanceof Player player && !((Player)pEntityLiving).getAbilities().instabuild) {
-                ItemStack itemstack = new ItemStack(ModItems.Bottlecap.get());
+                ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
                 if (!player.getInventory().add(itemstack)) {
                     player.drop(itemstack, false);
                 }
@@ -83,6 +80,7 @@ public class NukaCola extends HoneyBottleItem
     }
 
     }
+
 
 
 

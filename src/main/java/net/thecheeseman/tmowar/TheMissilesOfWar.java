@@ -1,5 +1,9 @@
 package net.thecheeseman.tmowar;
 
+import net.minecraft.world.item.CreativeModeTabs;
+import net.thecheeseman.tmowar.effect.ModEffects;
+import net.thecheeseman.tmowar.item.ModFoodProperties;
+import net.thecheeseman.tmowar.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -16,6 +20,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.thecheeseman.tmowar.sound.ModSounds;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(TheMissilesOfWar.MODID)
@@ -31,7 +36,9 @@ public class TheMissilesOfWar
         // Note that this is necessary if and only if we want *this* class (ExampleMod) to respond directly to events.
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
-
+        ModSounds.SOUND_EVENTS.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModEffects.register(modEventBus);
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -44,6 +51,15 @@ public class TheMissilesOfWar
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
+        if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) {
+            event.accept(ModItems.NukaCola);
+            event.accept(ModItems.NukaColaDark);
+            event.accept(ModItems.NukaColaGrape);
+            event.accept(ModItems.NukaColaOrange);
+            event.accept(ModItems.NukaColaQuartz);
+            event.accept(ModItems.NukaColaQuantum);
+            event.accept(ModItems.NukaColaVictory);
+        }
     }
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
